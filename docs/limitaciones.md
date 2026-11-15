@@ -1,0 +1,5 @@
+# Limitaciones Metodológicas — UmbralSim
+
+1. **Identificación de capacidad $\mu$ mediante sondeo de baja intensidad**: Un sondeo seguro limitado a $\le 5\text{ req/s}$ no puede saturar ni identificar la capacidad $\mu$ de un servidor real de producción. El sondeo estima la línea base de tiempo de servicio $S$, su variabilidad ($CV$) y disponibilidad. Para estimar $\mu$ se requieren logs con carga variada, métricas Prometheus o el perfil declarado de la infraestructura ($\mu = c / S$).
+2. **Aproximación M/M/1 vs. sistemas reales**: M/M/1 asume llegadas Poisson estacionarias, un único servidor y tiempos de servicio exponenciales ($CV = 1$). Servidores multi-núcleo o con tiempos de servicio heterogéneos deben modelarse con **M/M/c (Erlang C)** o **M/G/1 (Pollaczek-Khinchine)**, o bien mediante interpolación **PCHIP** cuando existen suficientes observaciones.
+3. **Extrapolación**: Toda predicción donde $\lambda^* > \lambda_{\max,\text{obs}}$ se etiqueta explícitamente como `EXTRAPOLACIÓN` junto con su intervalo bootstrap y nivel de confianza (`ALTA`, `MEDIA`, `BAJA`).

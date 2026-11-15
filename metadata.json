@@ -1,0 +1,6 @@
+{
+  "name": "UmbralSim — Predicción de Umbrales DoS/DDoS",
+  "description": "Simulador y analizador de umbrales de saturación mediante teoría de colas, métodos numéricos (Newton-Raphson y Secante) y mediciones reales autorizadas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
